@@ -1,36 +1,38 @@
-import Select from "react-select";
-import { useForm, Controller } from "react-hook-form";
-import Input from "@material-ui/core/Input";
+import React from 'react'
+import { useForm } from "react-hook-form";
+import './App.css'
 
-const App = () => {
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      firstName: '',
-      select: {}
-    }
-  });
-  const onSubmit = data => console.log(data);
+export default function App() {
 
+
+  const { handleSubmit, register, formState: { errors } } = useForm();
+  const onSubmit = values => console.log(values);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        name="firstName"
-        control={control}
-        render={({ field }) => <Input {...field} />}
+    <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <label>Email</label>
+      <input
+        type="email"
+        {...register("email", {
+          required: "Required",
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: "invalid email address"
+          }
+        })}
       />
-      <Controller
-        name="select"
-        control={control}
-        render={({ field }) => <Select 
-          {...field} 
-          options={[
-            { value: "chocolate", label: "Chocolate" },
-            { value: "strawberry", label: "Strawberry" },
-            { value: "vanilla", label: "Vanilla" }
-          ]} 
-        />}
+      {errors.email && errors.email.message}
+        <br />
+        <label>UserName</label>
+      <input
+        {...register("username", {
+          validate: value => value !== "admin" || "Nice try!"
+        })}
       />
-      <input type="submit" />
+      {errors.username && errors.username.message}
+        <br />
+      <button type="submit">Submit</button>
     </form>
-  );
-};
+    </div>
+  )
+}
