@@ -1,0 +1,49 @@
+{
+    "user": {
+      "id": 12345,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "isActive": true,
+      "preferences": {
+        "theme": "dark",
+        "notifications": {
+          "email": true,
+          "sms": false
+        },
+        "language": "en"
+      }
+    },
+    "products": [
+      {
+        "productId": 101,
+        "name": "Laptop",
+        "price": 999.99,
+        "inStock": true,
+        "tags": ["electronics", "computers"]
+      },
+      {
+        "productId": 102,
+        "name": "Wireless Mouse",
+        "price": 29.99,
+        "inStock": false,
+        "tags": ["electronics", "accessories"]
+      }
+    ],
+    "order": {
+      "orderId": 9876,
+      "date": "2024-11-19",
+      "total": 1029.98,
+      "status": "pending",
+      "items": [
+        {
+          "productId": 101,
+          "quantity": 1
+        },
+        {
+          "productId": 102,
+          "quantity": 1
+        }
+      ]
+    }
+  }
+  
