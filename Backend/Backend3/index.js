@@ -13,8 +13,8 @@ const port = 3000
 app.use(express.json())
 
 
-// "ORDER IS IMPORTENT"
 
+// "ORDER IS IMPORTENT"
 // middleware -loggin,auth,validation
 const logginMiddleware = function(req,res,next){
     console.log("Loggin kr rha hu ");
